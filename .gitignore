@@ -7,3 +7,10 @@ test/e2e/reports
 selenium-debug.log
 .idea/
 package-lock.json
+
+
+.vscode/*
+!.vscode/tasks.json
+
+database/db/*
+!database/db/.gitkeep

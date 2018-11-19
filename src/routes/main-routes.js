@@ -1,5 +1,5 @@
 import KoaRouter from 'koa-router'
-// import controllers from '../controllers/index'
+import controllers from '../controllers/index'
 
 const router = new KoaRouter()
 
@@ -7,6 +7,8 @@ router
   .get('/public/get', function (ctx, next) {
     ctx.body = 'public api!'
   })
+  .get('/public/pa', controllers.test.AddAuthor)
+  .get('/public/ps', controllers.test.AddStory)
 // .get('/project/list', controllers.monitor.project.projectApi.list)
 // .post('/project/save', controllers.monitor.project.projectApi.save)
 // .delete('/project/delete/:id', controllers.monitor.project.projectApi.deleteById)

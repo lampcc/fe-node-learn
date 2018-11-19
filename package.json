@@ -5,6 +5,7 @@
   "author": "meng",
   "scripts": {
     "start": "gulp nodemon",
+    "start:mongodb": "cd ./database && ./scripts/start_mongodb.sh",
     "dev": "gulp",
     "build": "babel src -d dist",
     "production": "node dist/app.js"

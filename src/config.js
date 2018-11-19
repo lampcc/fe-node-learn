@@ -22,16 +22,13 @@ export let DB = {
   database: 'development', // 数据库名称
   prefix: 'api_' // 默认"api_"
 }
-
 // Mongodb
 export let MDB = {
-  host: 'mongodb://localhost/',
+  host: 'localhost',
   db_name: 'Femonitor',
   username: '',
   password: ''
 }
-
-
 export let SendEmail = {
   service: 'smtp.abcd.com', // SMTP服务提供商域名
   username: 'postmaster%40abcd.com', // 用户名/用户邮箱

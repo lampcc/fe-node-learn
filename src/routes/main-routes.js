@@ -7,8 +7,10 @@ router
   .get('/public/get', function (ctx, next) {
     ctx.body = 'public api!'
   })
-  .get('/public/pa', controllers.test.TestController.addAuthor)
-  .get('/public/ps', controllers.test.TestController.addStory)
+  .post('/api/addAuthor', controllers.test.TestController.addAuthor)
+  .get('/api/getAuthorList', controllers.test.TestController.getAuthorList)
+  .post('/api/addStory', controllers.test.TestController.addStory)
+  .get('/api/test', controllers.test.TestController.testService)
 // .get('/project/list', controllers.monitor.project.projectApi.list)
 // .post('/project/save', controllers.monitor.project.projectApi.save)
 // .delete('/project/delete/:id', controllers.monitor.project.projectApi.deleteById)

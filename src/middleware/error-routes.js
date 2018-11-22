@@ -1,4 +1,5 @@
 module.exports = function () {
+  console.log('first run')
   return function (ctx, next) {
     switch (ctx.status) {
       case 404:

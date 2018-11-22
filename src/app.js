@@ -4,7 +4,7 @@ import KoaBody from 'koa-body'
 import {
   System as SystemConfig
 } from './config'
-import path from 'path'
+// import path from 'path'
 import MainRoutes from './routes/main-routes'
 // import ErrorRoutesCatch from './middleware/ErrorRoutesCatch'
 // import ErrorRoutes from './middleware/error-routes'
@@ -24,18 +24,26 @@ mongo()
 
 app
   // .use()
+  // .use(function () {
+  //   console.log(0)
+  //   return (ctx, next) => {
+  //     console.log('third run 2')
+  //     return next()
+  //   }
+  // }())
+
   // .use(ErrorRoutesCatch())
   // .use(KoaStatic('assets', path.resolve(__dirname, '../assets'))) // Static resource
   // .use(jwt({ secret: publicKey }).unless({ path: [/^\/public|\/user\/login|\/assets|\/report/] }))
   .use(KoaBody({
-    multipart: true,
-    strict: false,
-    formidable: {
-      uploadDir: path.join(__dirname, '../assets/uploads/tmp')
-    },
-    jsonLimit: '10mb',
-    formLimit: '10mb',
-    textLimit: '10mb'
+    // multipart: true,
+    // strict: false,
+    // formidable: {
+    //   uploadDir: path.join(__dirname, '../assets/uploads/tmp')
+    // },
+    // jsonLimit: '10mb',
+    // formLimit: '10mb',
+    // textLimit: '10mb'
   })) // Processing request
   // .use(PluginLoader(SystemConfig.System_plugin_path))
   .use(MainRoutes.routes())

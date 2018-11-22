@@ -1,7 +1,7 @@
 /**
  * 定义数据库实体
  */
-let mongoose = require('mongoose')
+import mongoose from 'mongoose'
 let Schema = mongoose.Schema
 
 let authorSchema = Schema({

@@ -9,6 +9,7 @@ router
   })
   .post('/api/addAuthor', controllers.test.TestController.addAuthor)
   .get('/api/getAuthorList', controllers.test.TestController.getAuthorList)
+  .put('/api/editAuthor/:id', controllers.test.TestController.editAuthor)
   .post('/api/addStory', controllers.test.TestController.addStory)
   .get('/api/test', controllers.test.TestController.testService)
 // .get('/project/list', controllers.monitor.project.projectApi.list)

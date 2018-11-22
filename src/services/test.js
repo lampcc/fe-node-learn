@@ -22,10 +22,11 @@ export class TestService extends BaseService {
   }
 
   async queryAuthores(query) {
-    return Author.find().sort({ _id: -1 }).exec()
+    return Author.find({ name: 'zw' }).sort({ _id: 1 }).exec()
   }
 
-  async undateAuthor(id, opt) {
+  async updateAuthor(id, opt) {
+
     return Author.updateOne({ _id: id }, { $set: opt })
   }
 
@@ -42,19 +43,19 @@ export class TestService extends BaseService {
    */
   async queryAuthorByCreater(data) {
     // Field selection
-    let record = await Story.find({ title: /tes/ig })
-      .populate('_creator', 'name').exec()
+    // let record = await Story.find({ title: /tes/ig })
+    //   .populate('_creator', 'name age').exec()
 
     // Query conditions and other options
-    // let record = Story
-    //   .find({ title: /tes/ig })
-    //   .populate({
-    //     path: 'fans',
-    //     match: { age: { $gte: 60 } },
-    //     select: 'name age -_id',
-    //     options: { limit: 5 }
-    //   })
-    //   .exec()
+    let record = Story
+      .find({ title: /tes/ig })
+      .populate({
+        path: 'fans _creator',
+        match: { age: { $lt: 60 } },
+        select: 'name age -_id',
+        options: { limit: 5 }
+      })
+      .exec()
 
     // let record = Author
     //   .find({})

@@ -10,6 +10,7 @@ export class Test extends TestService {
    */
   addAuthor = async (ctx) => {
     let data = ctx.request.body
+    if (!data.name || !data.age) return ((ctx.status = 405) && (ctx.body = 'params error!'))
     let msg = await this.insertAuthor(data)
     ctx.body = {
       result: msg
@@ -20,6 +21,16 @@ export class Test extends TestService {
     let msg = await this.queryAuthores()
     ctx.body = {
       total: msg.length,
+      result: msg
+    }
+  }
+
+  editAuthor = async (ctx) => {
+    let _id = ctx.params.id
+    let _opt = ctx.request.body
+    _opt.sdk = '100'
+    let msg = await this.updateAuthor(_id, _opt)
+    ctx.body = {
       result: msg
     }
   }

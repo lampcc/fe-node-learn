@@ -7,7 +7,7 @@ import {
 // import path from 'path'
 import MainRoutes from './routes/main-routes'
 // import ErrorRoutesCatch from './middleware/ErrorRoutesCatch'
-// import ErrorRoutes from './middleware/error-routes'
+import ErrorRoutes from './middleware/error-routes'
 // import jwt from 'koa-jwt'
 // import websockify from 'koa-websocket'
 // import IO from 'koa-socket'
@@ -23,15 +23,6 @@ const env = process.env.NODE_ENV || 'development' // Current mode
 mongo()
 
 app
-  // .use()
-  // .use(function () {
-  //   console.log(0)
-  //   return (ctx, next) => {
-  //     console.log('third run 2')
-  //     return next()
-  //   }
-  // }())
-
   // .use(ErrorRoutesCatch())
   // .use(KoaStatic('assets', path.resolve(__dirname, '../assets'))) // Static resource
   // .use(jwt({ secret: publicKey }).unless({ path: [/^\/public|\/user\/login|\/assets|\/report/] }))
@@ -48,7 +39,8 @@ app
   // .use(PluginLoader(SystemConfig.System_plugin_path))
   .use(MainRoutes.routes())
   .use(MainRoutes.allowedMethods())
-// .use(ErrorRoutes())
+  .use(ErrorRoutes())
+
 
 if (env === 'development') { // logger
   // app.use()

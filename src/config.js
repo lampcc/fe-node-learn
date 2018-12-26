@@ -24,7 +24,7 @@ export let DB = {
 }
 // Mongodb
 export let MDB = {
-  host: 'localhost',
+  host: '172.30.104.148',
   db_name: 'Femonitor',
   username: '',
   password: ''

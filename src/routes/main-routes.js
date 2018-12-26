@@ -1,17 +1,17 @@
-import KoaRouter from 'koa-router'
-import controllers from '../controllers/index'
+import KoaRouter from "koa-router";
+import controllers from "../controllers/index";
 
-const router = new KoaRouter()
+const router = new KoaRouter();
 
 router
-  .get('/public/get', function (ctx, next) {
-    ctx.body = 'public api!'
+  .get("/public/get", function(ctx, next) {
+    ctx.body = "public api!";
   })
-  .post('/api/addAuthor', controllers.test.TestController.addAuthor)
-  .get('/api/getAuthorList', controllers.test.TestController.getAuthorList)
-  .put('/api/editAuthor/:id', controllers.test.TestController.editAuthor)
-  .post('/api/addStory', controllers.test.TestController.addStory)
-  .get('/api/test', controllers.test.TestController.testService)
+  .post("/api/addAuthor", controllers.test.TestController.addAuthor)
+  .get("/public/getAuthorList", controllers.test.TestController.getAuthorList)
+  .put("/api/editAuthor/:id", controllers.test.TestController.editAuthor)
+  .post("/api/addStory", controllers.test.TestController.addStory)
+  .get("/api/test", controllers.test.TestController.testService);
 // .get('/project/list', controllers.monitor.project.projectApi.list)
 // .post('/project/save', controllers.monitor.project.projectApi.save)
 // .delete('/project/delete/:id', controllers.monitor.project.projectApi.deleteById)
@@ -27,4 +27,4 @@ router
 // .post('/auth/:action', controllers.auth.Post)
 // .post('/user/login', controllers.auth.Login)
 
-module.exports = router
+module.exports = router;

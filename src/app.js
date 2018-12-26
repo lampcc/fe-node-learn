@@ -4,28 +4,29 @@ import KoaBody from 'koa-body'
 import {
   System as SystemConfig
 } from './config'
-// import path from 'path'
+import path from 'path'
 import MainRoutes from './routes/main-routes'
-// import ErrorRoutesCatch from './middleware/ErrorRoutesCatch'
+import ErrorRoutesCatch from './middleware/error-routes-catch'
 import ErrorRoutes from './middleware/error-routes'
-// import jwt from 'koa-jwt'
+import jwt from 'koa-jwt'
 // import websockify from 'koa-websocket'
 // import IO from 'koa-socket'
-// import fs from 'fs'
+import fs from 'fs'
 // import PluginLoader from './lib/PluginLoader'
 import mongo from './services/mongo'
 
 const app = new Koa2()
 const env = process.env.NODE_ENV || 'development' // Current mode
 
-// const publicKey = fs.readFileSync(path.join(__dirname, '../publicKey.pub'))
+const publicKey = fs.readFileSync(path.join(__dirname, '../publicKey.pub'))
 
 mongo()
 
 app
-  // .use(ErrorRoutesCatch())
   // .use(KoaStatic('assets', path.resolve(__dirname, '../assets'))) // Static resource
-  // .use(jwt({ secret: publicKey }).unless({ path: [/^\/public|\/user\/login|\/assets|\/report/] }))
+  .use(ErrorRoutesCatch())
+  .use(jwt({ secret: publicKey })
+    .unless({ path: [/^\/public|\/user\/login|\/assets|\/report/] }))
   .use(KoaBody({
     // multipart: true,
     // strict: false,
@@ -40,7 +41,6 @@ app
   .use(MainRoutes.routes())
   .use(MainRoutes.allowedMethods())
   .use(ErrorRoutes())
-
 
 if (env === 'development') { // logger
   // app.use()

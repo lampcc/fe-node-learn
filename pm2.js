@@ -1,3 +1,4 @@
+// $ pm2 start app.js -i 0 -f
 module.exports = {
   apps: [{
     name: 'RESRful API Server',
